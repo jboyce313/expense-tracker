@@ -1,9 +1,22 @@
-import { neon } from "@neondatabase/serverless";
+"use client";
 
-export default async function RemainingFlexibleSpending() {
-  const sql = neon(process.env.DATABASE_URL!);
-  const result = await sql`SELECT amount FROM remaining_spending LIMIT 1`;
-  const amount = result[0]?.amount || 0;
+import { useEffect, useState } from "react";
+
+export default function RemainingFlexibleSpending() {
+  const [amount, setAmount] = useState(0);
+
+  useEffect(() => {
+    async function fetchAmount() {
+      const res = await fetch("/api/remaining");
+      const data = await res.json();
+      setAmount(data.amount);
+    }
+
+    fetchAmount();
+    const interval = setInterval(fetchAmount, 5000); // Optional: poll every 5s
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col items-center mb-4 bg-white p-4 rounded shadow">

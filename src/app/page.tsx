@@ -8,7 +8,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mt-4 mb-8">Expense Tracker</h1>
       <RemainingFlexibleSpending />
       <NewExpenseForm />
-      {/* <ResetBudget /> */}
+      <ResetBudget />
     </div>
   );
 }

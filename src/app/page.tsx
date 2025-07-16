@@ -1,6 +1,6 @@
-"use client";
 import RemainingFlexibleSpending from "./components/remaining-flexible-spending";
 import NewExpenseForm from "./components/new-expense-form";
+import ResetBudget from "./components/reset-budget";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mt-4 mb-8">Expense Tracker</h1>
       <RemainingFlexibleSpending />
       <NewExpenseForm />
+      <ResetBudget />
     </div>
   );
 }

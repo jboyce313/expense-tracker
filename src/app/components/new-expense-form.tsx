@@ -1,35 +1,18 @@
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
+// app/components/NewExpenseForm.tsx
+import { submitExpense } from "../actions/expenses";
 
 export default function NewExpenseForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-  const [amount, setAmount] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(event.target.value);
-  };
-
   return (
     <div className="flex flex-col mb-4 bg-white p-4 rounded shadow">
-      {/* <h2 className="mb-2 ml-0">Enter new expense:</h2> */}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form action={submitExpense} className="flex flex-col">
         <input
+          name="amount"
           type="number"
           placeholder="Enter new expense"
-          value={amount}
-          onChange={handleChange}
           className="border border-gray-300 rounded p-2 mb-2 w-full"
+          required
+          min="0.01"
+          step="0.01"
         />
         <button
           type="submit"

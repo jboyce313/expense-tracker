@@ -1,4 +1,3 @@
-// app/components/NewExpenseForm.tsx
 import { submitExpense } from "../actions/expenses";
 
 export default function NewExpenseForm() {
@@ -7,7 +6,7 @@ export default function NewExpenseForm() {
       <form action={submitExpense} className="flex flex-col">
         <input
           name="amount"
-          type="number"
+          type="tel"
           placeholder="Enter new expense"
           className="border border-gray-300 rounded p-2 mb-2 w-full"
           required

@@ -22,7 +22,7 @@ export default function NewExpenseForm() {
         <form action={resetBudget} className="flex flex-col">
           <input
             name="amount"
-            type="number"
+            type="tel"
             placeholder="Enter reset amount"
             className="border border-gray-300 rounded p-2 mb-2 w-full"
             required
@@ -32,6 +32,7 @@ export default function NewExpenseForm() {
           <button
             type="submit"
             className="bg-green-500 text-white rounded p-2 w-full"
+            onClick={() => setShowForm(false)}
           >
             Reset
           </button>
